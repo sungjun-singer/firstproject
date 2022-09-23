@@ -52,8 +52,9 @@ public class ArticleApiController {
     @DeleteMapping("api/articles/{id}")
     public ResponseEntity<Article> delete(@PathVariable Long id){
         Article deleted = articleService.delete(id);
-       return (deleted!=null) ?ResponseEntity.status(HttpStatus.NO_CONTENT).build():
-               ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        return (deleted!=null) ?
+                ResponseEntity.status(HttpStatus.NO_CONTENT).build():
+                ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
     }
 
     // 트랜잭션 -> 실패 -> 롤백!

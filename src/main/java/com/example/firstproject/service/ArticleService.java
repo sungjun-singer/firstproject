@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -64,6 +65,7 @@ public class ArticleService {
 
     }
 
+    @Transactional // 해당 메소드를 프랜잭션으로 묶는다!
     public List<Article> createArticles(List<ArticleForm> dtos) {
         // dto 묶음을 entity 묶음으로 변환
         List<Article> articleList = dtos.stream()
